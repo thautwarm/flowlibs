@@ -32,7 +32,7 @@ class Rule:
                                                    (key,  .item -> filters[key].match(item))) 
                                     -> andThen(list)(dict)(_))
         return self
-    
+
     @strict.args(object, dict)
     def set_func_filters(self, filters: Dict[str, str -> bool]):
         self.filters.update(filters)
