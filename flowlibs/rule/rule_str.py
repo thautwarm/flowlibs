@@ -1,6 +1,6 @@
 from flowpython.fp import foreach, flow_map, andThen
 from typing import Dict
-from ..typepy import strict
+from ..typepy import strict, Or
 import re
 
 class Rule:
@@ -13,7 +13,7 @@ class Rule:
         >>> relu.set_content_filters(dict(dns_filter = "dns", hashref = "href"))
         >>> relu.set_func_filters(dict(lenght_filter = . item -> len(item)>5  ))
     """
-    
+
     def __init__(self, re_compile: re.compile):
         self.filters: str -> bool = dict()
         self.main_rule: str -> [str] = re_compile
@@ -37,8 +37,9 @@ class Rule:
                                     -> andThen(list)(dict)(_))
         return self
 
-    @strict.args(object, str)
+    @strict.args(object, Or(str, bytes) )
     def match(self, content):
+        if isinstance(content, bytes): content = content.decode('utf-8')
         filter_composed = as-with item def SeeFollowing where:
             for filter_name in self.filters:
                 if not self.filters[filter_name](item):
