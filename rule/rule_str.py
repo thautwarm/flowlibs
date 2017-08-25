@@ -1,15 +1,7 @@
-import urllib.request as urlreq
-import requests
 from flowpython.fp import foreach, flow_map, andThen
 from typing import Dict
-from typepy import strict
-re = urlreq.re
-headers = {
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
-    "Accept": "image/webp,image/*,*/*;q=0.8",
-    "Accept-Encoding": "gzip, deflate, sdch, br",
-    "Accept-Language": "zh-CN,zh;q=0.8"
-}
+from ..typepy import strict
+import re
 
 class Rule:
     """ To match strings more easily. 
