@@ -41,7 +41,8 @@ def _check(input_var, check_type, idx = None, key = None, ret = None):
             raise TypeError(error_helper("Type of {return_or_input} {idx_or_key} should be {type}.", **error_render())) 
         
 class strict:
-    @staticmethod
+    def __new__(self):
+        return strict
     def args(*typeargs : "*[, typearg]" , **typekwargs : "**dict(, kw = arg)"):
         def _1(func):
             def _2(*args, **kwargs):

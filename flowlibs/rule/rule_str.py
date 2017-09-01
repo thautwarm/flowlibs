@@ -2,7 +2,7 @@ from flowpython.fp import foreach, flow_map, andThen
 from typing import Dict
 from ..typepy import strict, Or
 import re
-
+SRE_Pattern = re.compile("").__class__
 class Rule:
     """ To match strings more easily. 
         It could be slower than `re` module, as a result, it could be more powerful and convenient.
@@ -14,7 +14,7 @@ class Rule:
         >>> relu.set_func_filters(dict(lenght_filter = . item -> len(item)>5  ))
     """
 
-    def __init__(self, re_compile: re.compile):
+    def __init__(self, re_compile: SRE_Pattern):
         self.filters: str -> bool = dict()
         self.main_rule: str -> [str] = re_compile
 
